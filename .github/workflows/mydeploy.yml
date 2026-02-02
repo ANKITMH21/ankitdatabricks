@@ -1,6 +1,5 @@
 name: CI
 
-
 on:
   push:
     paths-ignore:
@@ -19,8 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: Dev
     env:
-      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
-      DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }} # This is the service principal UUID.
+      DATABRICKS_HOST: ${{ secrets.DEPLOYMENT_TARGET_URL }}
+      DATABRICKS_TOKEN: ${{ secrets.DEPLOYMENT_TARGET_TOKEN }} # This is the service principal UUID.
+      REPO_PATH: /Workspace//Users/mhatreankit2888@gmail.com/mydata
 
     steps:
       - uses: actions/checkout@v3
